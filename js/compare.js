@@ -6,7 +6,19 @@ class Car {
    
 
     constructor(nome, preco, alturaCacamba, alturaVeiculo, alturaSolo, capacidadeCarga, motor, potencia, volumeCacamba, roda, image){
-       
+       this.nome = nome;
+       this.preço = preco;
+       this.alturaCacamba = alturaCacamba;
+       this.alturaVeiculo = alturaVeiculo;
+       this.alturaSolo = alturaSolo;
+       this.capacidadeCarga = capacidadeCarga;
+       this.motor = motor;
+       this.potencia = potencia;
+       this.volumeCacamba = volumeCacamba;
+       this.roda = roda;
+       this.image = image;
+
+
     }
 } 
 
@@ -23,7 +35,12 @@ function SetCarToCompare(el, carClass) {
    
     if(carClass instanceof Car){       
         if(el.checked){
-                
+                if(carArr.length >= 2){
+                    el.checked = false;
+                    alert("voce so pode comparar 2 veiculos por vez");
+                    return;
+                }
+
             
         } else {
           

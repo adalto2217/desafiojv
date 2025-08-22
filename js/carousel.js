@@ -8,21 +8,20 @@ let carouselArr = [];
 
 //class Carousel
 class Carousel {
+constructor (image, title, uri){
 
-        constructor(image, title, uri){
-            this.image = image;
-            this.title = title;
-            this.uri = uri;
-        }
+this.image = image;
+this.title = title;
+this.uri = uri;
 
-    constructor(image, title, uri){
-        this.image=image;
-        this.title=title;
-        this.uri=uri;
-    }
+
+}
+    
       
     static Start(arr){
+        
         if(arr && arr.length > 0){
+
                 Carousel._sequence = 0;
                 Carousel._size = arr.length;
                 Carousel._arr = arr;
@@ -32,30 +31,33 @@ class Carousel {
             
         } else {
             //throw "Method Start need a Array Variable.";
-            throw "o metodo star precisar receber um array valido. "
+            throw " o metodo Start precisa receber array valido. "
         }
+    
     }
 
-    static Next(){
+        static Next(){
 
-        const carouselElement = document.getElementById("carousel");
-        const titleElemet = document.getElementById("carousel-title");
+        const CarouselElement = document.getElementById ("carousel");
+        const titleElement = document.getElementById ("carousel-title");
         
-        if(!carouselElement || !titleElemet){
-            console.error("elementos do carrossel não encontrados!");
-            return;
-        }
+        if (!CarouselElement || !titleElement){
 
+            console.error("elementos do carrosel não encontrado");
+            
+            return;
+
+        }
         const item = Carousel._arr[Carousel._sequence];
 
-        carouselElement.style.backgroundImage = `url (projeto/img/${item.image}`;
-        carouselElement.style.backgroundPosition = "center";
-        carouselElement.style.blockSize = "cover";
-        carouselElement.style.transition = "backgroud-image 0.5 ease-in-ou";
+        CarouselElement.style.backgroundImage = `url(img/${item.image})`;
+        CarouselElement.style.backgroundPosition = "center";
+        CarouselElement.style.backgroundSize = "cover";
+        CarouselElement.style.transition = "background-image 0.5s ease-in-out";
 
-        titleElemet.innerHTML = `<a href= "${item.uri}"> ${item.title}</a> `;
+        titleElement.innerHTML =  `<a href= "${item.uri}"> ${item.title}</a>`;
 
         Carousel._sequence = (Carousel._sequence + 1) % Carousel._size;
-    }
-    
+
+    } 
 };
